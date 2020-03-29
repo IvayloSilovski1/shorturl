@@ -24,6 +24,8 @@ app.post('/shortUrls', async (req, res) => {
     res.redirect('/');
 });
 
+// App is working just fine
+
 
 app.get('/:shortUrl', async (req, res) => {
     const shorturl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl });
