@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Home Page</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Home</h2>
+        <h4>URL Shrinker</h4>
+        <br>
+
+        <form action="/shortUrls" method="post" class="w-50">
+            <div class="form-group">
+                <label for="fullUrl" class="sr-only">URL:</label>
+                <input type="url" name="fullUrl" id="fullUrl" class="form-control" required placeholder="URL">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">GO!</button>
+            </div>
+        </form>
+        <br>
+        <br>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Full URL</th>
+                    <th scope="col">Short URL</th>
+                    <th scope="col">Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shorturls.forEach(shortUrl => { %>
+                    <tr>
+                        <th scope="row">
+                            <a href="<%= shortUrl.fullUrl %>">
+                                <%= shortUrl.fullUrl %>
+                            </a>
+                        </th>
+                        <td>
+                            <a href="<%= shortUrl.shortUrl %>">
+                                <%= shortUrl.shortUrl %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= shortUrl.clicks %>
+                        </td>
+                    </tr>
+                <% }) %>
+                <tr>
+                    <th scope="row">1</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
